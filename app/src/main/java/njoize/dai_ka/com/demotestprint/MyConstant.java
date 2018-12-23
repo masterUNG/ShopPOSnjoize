@@ -3,6 +3,11 @@ package njoize.dai_ka.com.demotestprint;
 public class MyConstant {
 
     //    Explicit
+    private int[] iconDrawerInts = new int[]{R.drawable.ic_action_one, R.drawable.ic_action_one, R.drawable.ic_action_exit};
+    private String[] titleDrawerStrings = new String[]{"Menu1", "Menu2", "Sign Out"};
+
+
+
     private String[] detailStrings = new String[]{"idBill", "Time", "cnum", "type", "name", "Zone", "Desk"};
 
     private String ipAddressPrinter = "192.168.1.87";
@@ -15,7 +20,7 @@ public class MyConstant {
 
     private String[] titleTabStrings = new String[]{"Bill", "Desk", "Food", "Noti"};
 
-    private String[] billTitleStrings = new String[]{"ยังไม่ชำระ", "สำเร็จ", "ยกเลิก", "สั่งซื้อแบบออนไลน์"};
+    private String[] billTitleStrings = new String[]{"ยังไม่ชำระ", "สำเร็จ", "ยกเลิก"};
 
     private int[] iconBillTitleInts = new int[]{R.drawable.ic_action_bill, R.drawable.ic_action_desk, R.drawable.ic_action_food, R.drawable.ic_action_noti};
 
@@ -48,6 +53,14 @@ public class MyConstant {
 
 //    Getter
 
+
+    public int[] getIconDrawerInts() {
+        return iconDrawerInts;
+    }
+
+    public String[] getTitleDrawerStrings() {
+        return titleDrawerStrings;
+    }
 
     public String[] getDetailStrings() {
         return detailStrings;
