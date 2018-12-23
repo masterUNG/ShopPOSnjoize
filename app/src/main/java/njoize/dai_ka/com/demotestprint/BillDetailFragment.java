@@ -179,8 +179,9 @@ public class BillDetailFragment extends Fragment {
 
 
     private void createCommunicationPrinter() {
+        MyConstant myConstant = new MyConstant();
         wifiCommunication = new WifiCommunication(handler);
-        wifiCommunication.initSocket( "192.168.1.87", 9100);
+        wifiCommunication.initSocket( myConstant.getIpAddressPrinter(), myConstant.getPortPrinter());
     }
 
     private Handler handler = new Handler() {

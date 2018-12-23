@@ -3,6 +3,10 @@ package njoize.dai_ka.com.demotestprint;
 public class MyConstant {
 
     //    Explicit
+    private String ipAddressPrinter = "192.168.1.87";
+    private int portPrinter = 9100;
+
+
     private String urlGetUserWhereName = "http://www.brainwakecafe.com/android/getUserWhereName.php";
 
     private String nameShopString = "Name Shop";
@@ -42,6 +46,14 @@ public class MyConstant {
 
 //    Getter
 
+
+    public String getIpAddressPrinter() {
+        return ipAddressPrinter;
+    }
+
+    public int getPortPrinter() {
+        return portPrinter;
+    }
 
     public String getUrlReadAllDesk() {
         return urlReadAllDesk;
