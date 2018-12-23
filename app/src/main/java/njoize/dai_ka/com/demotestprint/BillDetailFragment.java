@@ -180,7 +180,7 @@ public class BillDetailFragment extends Fragment {
 
     private void createCommunicationPrinter() {
         wifiCommunication = new WifiCommunication(handler);
-        wifiCommunication.initSocket( "192.168.1.89", 9100);
+        wifiCommunication.initSocket( "192.168.1.87", 9100);
     }
 
     private Handler handler = new Handler() {

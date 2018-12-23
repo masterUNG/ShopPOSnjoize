@@ -1,13 +1,16 @@
 package njoize.dai_ka.com.demotestprint;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +27,7 @@ public class ServiceActivity extends AppCompatActivity {
     private String tag = "1devV2";
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private boolean aBoolean = true; //true ==> Check Internet
 
 
     @Override
@@ -31,31 +35,51 @@ public class ServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
 
+//        Check Internet
+        checkInternet();
+
 //        Get ValueLogin
         getValueLogin();
-
 
 //        Create Toolbar
         createToolbar();
 
 //        Add Fragment
+        addFragment(savedInstanceState);
+
+
+    } // Main Method
+
+    private void checkInternet() {
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (!(networkInfo != null && networkInfo.isConnected() && aBoolean)) {
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ServiceActivity.this);
+            alertDialogBuilder.setTitle("Check Internet").setMessage("Cannot Connected Internet").setPositiveButton("Exit App", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                    dialog.dismiss();
+                }
+            }).setNegativeButton("Continue App", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    aBoolean = false;
+                    dialog.dismiss();
+                }
+            }).show();
+
+        }
+    }
+
+    private void addFragment(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.contentServiceFragment, new ServiceFragment())
                     .commit();
         }
-
-//        Add Bill Fragment
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .add(R.id.contentServiceFragment, new ServiceBillFragment())
-//                    .commit();
-//        }
-
-
-    } // Main Method
+    }
 
     @Override
     public void onBackPressed() {
