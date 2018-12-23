@@ -2,6 +2,7 @@ package njoize.dai_ka.com.demotestprint;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -90,7 +91,6 @@ public class BillFragment extends Fragment {
         String userLogined = sharedPreferences.getString("User", "");
 
 
-
         RecyclerView recyclerView = getView().findViewById(R.id.recyclerViewBill);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
@@ -146,19 +146,20 @@ public class BillFragment extends Fragment {
                 public void onClickItem(View view, int positions) {
                     Log.d("2decV2", "You Click ==> " + positions);
 
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.contentServiceFragment,
-                                    BillDetailFragment.billDetailInstance(idBillStringArrayList.get(positions),
-                                            timeStringArrayList.get(positions),
-                                            cnumStringArrayList.get(positions),
-                                            typeStringArrayList.get(positions),
-                                            nameStringArrayList.get(positions),
-                                            zoneStringArrayList.get(positions),
-                                            deskStringArrayList.get(positions)))
-                            .addToBackStack(null)
-                            .commit();
+                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                    MyConstant myConstant = new MyConstant();
+                    String[] strings = myConstant.getDetailStrings();
 
+                    intent.putExtra(strings[0], idBillStringArrayList.get(positions));
+                    intent.putExtra(strings[1], timeStringArrayList.get(positions));
+                    intent.putExtra(strings[2], cnumStringArrayList.get(positions));
+                    intent.putExtra(strings[3], typeStringArrayList.get(positions));
+                    intent.putExtra(strings[4], nameStringArrayList.get(positions));
+                    intent.putExtra(strings[5], zoneStringArrayList.get(positions));
+                    intent.putExtra(strings[6], deskStringArrayList.get(positions));
+
+                    startActivity(intent);
+                    
                 }
             });
             recyclerView.setAdapter(billRecyclerViewAdapter);
@@ -167,9 +168,6 @@ public class BillFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         } // try
-
-
-
 
 
     } // createRecyclerView

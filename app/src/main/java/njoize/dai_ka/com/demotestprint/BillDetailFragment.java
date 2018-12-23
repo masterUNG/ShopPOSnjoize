@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,19 +75,14 @@ public class BillDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+//        Create Toolbar
+        createToolbar();
+
 //        Check Connected Printer
         createCommunicationPrinter();
 
 //        Print Controller
-        button = getView().findViewById(R.id.btnPayment);
-        printAgainButton = getView().findViewById(R.id.btnPaymentAgain);
-        printAgainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createCommunicationPrinter();
-                communicationABoolean = true;
-            }
-        });
+        printController();
 
 
 //        Get OID
@@ -101,6 +97,32 @@ public class BillDetailFragment extends Fragment {
 
 
     } // Main Method
+
+    private void createToolbar() {
+        Toolbar toolbar = getView().findViewById(R.id.toolbarDetail);
+        ((DetailActivity)getActivity()).setSupportActionBar(toolbar);
+        ((DetailActivity) getActivity()).getSupportActionBar().setTitle("Detail");
+        ((DetailActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+        ((DetailActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+    }
+
+    private void printController() {
+        button = getView().findViewById(R.id.btnPayment);
+        printAgainButton = getView().findViewById(R.id.btnPaymentAgain);
+        printAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createCommunicationPrinter();
+                communicationABoolean = true;
+            }
+        });
+    }
 
     private void showText() {
         TextView leftTextView = getView().findViewById(R.id.txtLeft);

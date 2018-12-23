@@ -3,6 +3,8 @@ package njoize.dai_ka.com.demotestprint;
 public class MyConstant {
 
     //    Explicit
+    private String[] detailStrings = new String[]{"idBill", "Time", "cnum", "type", "name", "Zone", "Desk"};
+
     private String ipAddressPrinter = "192.168.1.87";
     private int portPrinter = 9100;
 
@@ -46,6 +48,10 @@ public class MyConstant {
 
 //    Getter
 
+
+    public String[] getDetailStrings() {
+        return detailStrings;
+    }
 
     public String getIpAddressPrinter() {
         return ipAddressPrinter;
