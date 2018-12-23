@@ -48,6 +48,8 @@ public class ServiceFragment extends Fragment {
         viewPager.setAdapter(myPagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
+        viewPager.setCurrentItem(1);
+
     }
 
     private void createTabLayout() {
