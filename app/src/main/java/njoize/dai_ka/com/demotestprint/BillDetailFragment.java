@@ -36,7 +36,9 @@ public class BillDetailFragment extends Fragment {
     private boolean communicationABoolean = true; // true ==> Can Print, false ==> Disable Print
     private Button button, printAgainButton;
     private int anInt = 0;
+    private int total;
 
+    private ArrayList<String> nameStringArrayList, amountStringArrayList, priceStringArrayList;
 
 
     private String idBillString, timeString, cnumString, typeString, nameString, zoneString, deskString;
@@ -70,7 +72,6 @@ public class BillDetailFragment extends Fragment {
     }
 
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -95,12 +96,11 @@ public class BillDetailFragment extends Fragment {
         showText();
 
 
-
     } // Main Method
 
     private void createToolbar() {
         Toolbar toolbar = getView().findViewById(R.id.toolbarDetail);
-        ((DetailActivity)getActivity()).setSupportActionBar(toolbar);
+        ((DetailActivity) getActivity()).setSupportActionBar(toolbar);
         ((DetailActivity) getActivity()).getSupportActionBar().setTitle("Detail");
         ((DetailActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
         ((DetailActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -140,11 +140,11 @@ public class BillDetailFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        ArrayList<String> nameStringArrayList = new ArrayList<>();
+        nameStringArrayList = new ArrayList<>();
         ArrayList<String> detailStringArrayList = new ArrayList<>();
-        ArrayList<String> amountStringArrayList = new ArrayList<>();
+        amountStringArrayList = new ArrayList<>();
         ArrayList<String> billStringArrayList = new ArrayList<>();
-        ArrayList<String> priceStringArrayList = new ArrayList<>();
+        priceStringArrayList = new ArrayList<>();
 
 
         try {
@@ -170,7 +170,7 @@ public class BillDetailFragment extends Fragment {
             recyclerView.setAdapter(billDetailAdapter);
 
 
-            int total = 0;
+            total = 0;
             for (String s : priceStringArrayList) {
                 total = total + Integer.parseInt(s.trim());
             }
@@ -198,12 +198,10 @@ public class BillDetailFragment extends Fragment {
     }
 
 
-
-
     private void createCommunicationPrinter() {
         MyConstant myConstant = new MyConstant();
         wifiCommunication = new WifiCommunication(handler);
-        wifiCommunication.initSocket( myConstant.getIpAddressPrinter(), myConstant.getPortPrinter());
+        wifiCommunication.initSocket(myConstant.getIpAddressPrinter(), myConstant.getPortPrinter());
     }
 
     private Handler handler = new Handler() {
@@ -212,7 +210,7 @@ public class BillDetailFragment extends Fragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            String tag = "12decV1";
+            String tag = "12decV2";
             switch (msg.what) {
 
                 case WifiCommunication.WFPRINTER_CONNECTED:
@@ -233,58 +231,58 @@ public class BillDetailFragment extends Fragment {
                                 Log.d("12decV1", "You Click Payment: " + printSring);
 
 
-                                byte[] top      = new byte[]{0x10, 0x04, 0x04}; // Space Front Bill
+                                byte[] top = new byte[]{0x10, 0x04, 0x04}; // Space Front Bill
                                 //byte[] bytes  = new byte[]{0x1B, 0x4A, 40}; // Space Front Bill n*0.125 mm
-                                byte[] lineup   = new byte[]{0x0A, 0x0D}; // Update Line
+                                byte[] lineup = new byte[]{0x0A, 0x0D}; // Update Line
                                 byte[] centered = new byte[]{0x1B, 0x61, 1}; // centered
-                                byte[] left     = new byte[]{0x1B, 0x61, 0}; // left
-                                byte[] right    = new byte[]{0x1B, 0x61, 2}; // right
-                                byte[] tab    = new byte[]{27,101,0,9}; // tab
-                                byte[] tab1    = new byte[]{27,101,48,1}; // tab
-                                byte[] tab2    = new byte[]{27,101,48,2}; // tab
-                                byte[] tab3    = new byte[]{27,101,48,3}; // tab
+                                byte[] left = new byte[]{0x1B, 0x61, 0}; // left
+                                byte[] right = new byte[]{0x1B, 0x61, 2}; // right
+                                byte[] tab = new byte[]{27, 101, 0, 9}; // tab
+                                byte[] tab1 = new byte[]{27, 101, 48, 1}; // tab
+                                byte[] tab2 = new byte[]{27, 101, 48, 2}; // tab
+                                byte[] tab3 = new byte[]{27, 101, 48, 3}; // tab
 //                                byte[] tab0    = new byte[]{27,68, 9}; // tab
-                                byte[] tab0    = new byte[]{9}; // tab
-                                byte[] dfont    = new byte[]{0x1B, 0x21, 0x00}; // default font
-                                byte[] bold     =  new  byte [ 3 ]; // Set the font (double height and width bold)
+                                byte[] tab0 = new byte[]{9}; // tab
+                                byte[] dfont = new byte[]{0x1B, 0x21, 0x00}; // default font
+                                byte[] bold = new byte[3]; // Set the font (double height and width bold)
                                 bold[0] = 0x1B;
                                 bold[1] = 0x21;
                                 bold[2] |= 0x04; // 08 04 bold
                                 bold[2] |= 0x08; // 10 08 height
                                 bold[2] |= 0x20; // 20 10
-                                byte[] openCashDrawer   = new byte[]{0x1B, 0x70, 0x00, 0x40, 0x50}; // Open Cash Drawer
-                                byte[] cutterPaper      = new byte[]{0x1D, 0x56, 0x42, 90}; // Cutter Paper command
+                                byte[] openCashDrawer = new byte[]{0x1B, 0x70, 0x00, 0x40, 0x50}; // Open Cash Drawer
+                                byte[] cutterPaper = new byte[]{0x1D, 0x56, 0x42, 90}; // Cutter Paper command
 
 
-                                byte[] OVERLINE         = new byte[] { 0x1B,0x2D,0x01 };
-                                byte[] UNDERLINE        = new byte[] { 0x1B,0x2D,0x01 };
-                                byte[] ROW_SPACE        = new byte[] { 0x1B, 0x31, 0x06 }; //
-                                byte[] ROW_DEFAULT      = new byte[] { 0x1B, 0x32 }; //
-                                byte[] ROW              = new byte[] { 0x1B, 0x33,0x00 }; //
-                                byte[] INIT             = new byte[] { 0x1B, 0x40 };
-                                byte[] CLEAN            = new byte[] { 0x18 };
-                                byte[] LF               = new byte[] { 0x0A };
-                                byte[] CR               = new byte[] { 0x0D };
-                                byte[] DLE_EOT_1        = new byte[] { 0x10,0x04,0x01 };
-                                byte[] DLE_EOT_2        = new byte[] { 0x10,0x04,0x02 };
-                                byte[] DLE_EOT_3        = new byte[] { 0x10,0x04,0x03 };
-                                byte[] DLE_EOT_4        = new byte[] { 0x10,0x04,0x04 }; //top
-                                byte[] DOUBLE_WIDTH     = new byte[] { 0x1B,0x0E };
-                                byte[] CANCEL_DOUBLE_WIDTH = new byte[] { 0x1B,0x14 };
-                                byte[] BOLD             = new byte[] { 0x1B,0x45,0x01 };
-                                byte[] CANCEL_BOLD      = new byte[] { 0x1B,0x45,0x00 };
-                                byte[] MOVE_POINT       = new byte[] { 0x1B,0x4A,0x00 }; //ติดบรรทัดบน
-                                byte[] FONT             = new byte[] { 0x1B,0x4D,0x00 };
-                                byte[] RINGHTMARGIN     = new byte[] { 0x1B,0x51,0x05 };
-                                byte[] TRANSVERSE       = new byte[] { 0x1B,0x55,0x03 };
-                                byte[] LONGITUDINAL     = new byte[] { 0x1B,0x56,0x01 }; //แนวนอน
-                                byte[] ALIGN_LEFT       = new byte[] { 0x1B,0x61,0x00 }; //left
-                                byte[] ALIGN_CENTER     = new byte[] { 0x1B,0x61,0x01 }; //centered
-                                byte[] ALIGN_RIGHT      = new byte[] { 0x1B,0x61,0x02 }; //right
-                                byte[] DIRECTION        = new byte[] { 0x1B,0x63,0x00 }; //กลับไปจัดซ้าย
-                                byte[] MOVE_LINE        = new byte[] { 0x1B,0x64,0x08 }; //เว้น8บรรทัด
-                                byte[] BLANK_LINE       = new byte[] { 0x1B,0x66,0x00,0x02 }; //
-                                byte[] ROTATION         = new byte[] { 0x1B,0x49,0x00 };
+                                byte[] OVERLINE = new byte[]{0x1B, 0x2D, 0x01};
+                                byte[] UNDERLINE = new byte[]{0x1B, 0x2D, 0x01};
+                                byte[] ROW_SPACE = new byte[]{0x1B, 0x31, 0x06}; //
+                                byte[] ROW_DEFAULT = new byte[]{0x1B, 0x32}; //
+                                byte[] ROW = new byte[]{0x1B, 0x33, 0x00}; //
+                                byte[] INIT = new byte[]{0x1B, 0x40};
+                                byte[] CLEAN = new byte[]{0x18};
+                                byte[] LF = new byte[]{0x0A};
+                                byte[] CR = new byte[]{0x0D};
+                                byte[] DLE_EOT_1 = new byte[]{0x10, 0x04, 0x01};
+                                byte[] DLE_EOT_2 = new byte[]{0x10, 0x04, 0x02};
+                                byte[] DLE_EOT_3 = new byte[]{0x10, 0x04, 0x03};
+                                byte[] DLE_EOT_4 = new byte[]{0x10, 0x04, 0x04}; //top
+                                byte[] DOUBLE_WIDTH = new byte[]{0x1B, 0x0E};
+                                byte[] CANCEL_DOUBLE_WIDTH = new byte[]{0x1B, 0x14};
+                                byte[] BOLD = new byte[]{0x1B, 0x45, 0x01};
+                                byte[] CANCEL_BOLD = new byte[]{0x1B, 0x45, 0x00};
+                                byte[] MOVE_POINT = new byte[]{0x1B, 0x4A, 0x00}; //ติดบรรทัดบน
+                                byte[] FONT = new byte[]{0x1B, 0x4D, 0x00};
+                                byte[] RINGHTMARGIN = new byte[]{0x1B, 0x51, 0x05};
+                                byte[] TRANSVERSE = new byte[]{0x1B, 0x55, 0x03};
+                                byte[] LONGITUDINAL = new byte[]{0x1B, 0x56, 0x01}; //แนวนอน
+                                byte[] ALIGN_LEFT = new byte[]{0x1B, 0x61, 0x00}; //left
+                                byte[] ALIGN_CENTER = new byte[]{0x1B, 0x61, 0x01}; //centered
+                                byte[] ALIGN_RIGHT = new byte[]{0x1B, 0x61, 0x02}; //right
+                                byte[] DIRECTION = new byte[]{0x1B, 0x63, 0x00}; //กลับไปจัดซ้าย
+                                byte[] MOVE_LINE = new byte[]{0x1B, 0x64, 0x08}; //เว้น8บรรทัด
+                                byte[] BLANK_LINE = new byte[]{0x1B, 0x66, 0x00, 0x02}; //
+                                byte[] ROTATION = new byte[]{0x1B, 0x49, 0x00};
 
                                 wifiCommunication.sndByte(openCashDrawer);
 
@@ -300,26 +298,37 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sndByte(dfont);
                                 wifiCommunication.sendMsg("-------------------------", "tis-620");
                                 wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sndByte(left);
-                                wifiCommunication.sendMsg("Egg Benedict 1 ฟอง", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg("80", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg("x 2", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg("160", "tis-620");
-                                wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sndByte(left);
-                                wifiCommunication.sendMsg("Pork Kao Lao แห้ง    ", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg("115", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg("x 1", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg("115", "tis-620");
+
+//                                Work Here
+
+                                Log.d("12decV1", "nameArray ==> " + nameStringArrayList.toString());
+                                Log.d("12decV1", "amountArray ==> " + amountStringArrayList.toString());
+                                Log.d("12decV1", "prickArray ==> " + priceStringArrayList.toString());
+
+
+
+                                for (int i = 0; i < nameStringArrayList.size(); i += 1) {
+
+                                    wifiCommunication.sndByte(left);
+                                    wifiCommunication.sendMsg(Integer.toString(i + 1) + " x ", "tis-620");
+                                    wifiCommunication.sndByte(tab);
+
+                                    wifiCommunication.sendMsg(shortFood(nameStringArrayList.get(i)), "tis-620");
+                                    wifiCommunication.sndByte(tab);
+
+//                                    wifiCommunication.sendMsg("80", "tis-620");
+                                    wifiCommunication.sndByte(tab);
+
+
+                                    wifiCommunication.sendMsg(rightWord(priceStringArrayList.get(i)), "tis-620");
+                                    wifiCommunication.sndByte(lineup);
+
+
+                                }
+
                                 wifiCommunication.sndByte(lineup);
                                 wifiCommunication.sndByte(right);
-                                wifiCommunication.sendMsg("รวมทั้งสิ้น 275 บาท", "tis-620");
+                                wifiCommunication.sendMsg(shortTotal(), "tis-620");
                                 wifiCommunication.sndByte(lineup);
                                 wifiCommunication.sndByte(lineup);
                                 wifiCommunication.sndByte(centered);
@@ -327,9 +336,6 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sndByte(lineup);
 
                                 wifiCommunication.sndByte(cutterPaper);
-
-
-
 
 
 //                                wifiCommunication.sndByte(left);
@@ -374,8 +380,6 @@ public class BillDetailFragment extends Fragment {
 //
 //                                wifiCommunication.sndByte(dfont);
 //                                wifiCommunication.sendMsg("1", "tis-620");
-
-
 
 
 //                                byte[] INIT = new byte[] { 0x1B, 0x40 };
@@ -500,7 +504,6 @@ public class BillDetailFragment extends Fragment {
 //                                wifiCommunication.sendMsg("ROTATION", "tis-620");
 
 
-
 //
 ////                                wifiCommunication.sndByte(top);
 //                                wifiCommunication.sndByte(dfont);
@@ -553,7 +556,6 @@ public class BillDetailFragment extends Fragment {
 //
 
 
-
                                 wifiCommunication.close();
 
                                 communicationABoolean = false;
@@ -579,6 +581,40 @@ public class BillDetailFragment extends Fragment {
         } // handleMessage
     };
 
+    private String shortTotal() {
+
+        String s = "รวมทั้งสิ้น ";
+        String s1 = " บาท";
+        String result = s + Integer.toString(total) + s1;
+
+        return result;
+    }
+
+    private String rightWord(String totalPriceString) {
+
+        int currentWord = totalPriceString.length();
+        String result = "";
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < (5 - currentWord); i += 1) {
+            stringBuilder.append(" ");
+        }
+
+        result = stringBuilder.toString() + totalPriceString;
+
+        return result;
+    }
+
+    private String shortFood(String foodString) {
+
+        String result = foodString;
+
+        if (result.length() <= 20) {
+            result = result.substring(0, 17) + "...";
+        }
+
+        return result;
+    }
 
 
     @Override
