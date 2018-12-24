@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -25,7 +26,7 @@ import org.json.JSONObject;
 public class DeskFragment extends Fragment {
 
     //    Explicit
-    private TextView[][] imageViews = new TextView[10][10];
+    private TextView[][] textViews = new TextView[10][10];
     private int[][] ints = new int[][]{
             {R.id.imv0_0, R.id.imv0_1, R.id.imv0_2, R.id.imv0_3, R.id.imv0_4, R.id.imv0_5, R.id.imv0_6, R.id.imv0_7, R.id.imv0_8, R.id.imv0_9},
             {R.id.imv1_0, R.id.imv1_1, R.id.imv1_2, R.id.imv1_3, R.id.imv1_4, R.id.imv1_5, R.id.imv1_6, R.id.imv1_7, R.id.imv1_8, R.id.imv1_9},
@@ -54,9 +55,35 @@ public class DeskFragment extends Fragment {
 
 //      Draw Desk
         drawDesk();
+//        textViews[9][0].setText("Test" + "\n" + "Test2");
+//        textViews[9][0].setWidth(1);
+
+//        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) textViews[9][0].getLayoutParams();
+//        layoutParams.width = 300;
+//        textViews[9][0].setLayoutParams(layoutParams);
+//        Test
+
+        buildTextView(textViews[9][6]);
 
 
     } // Main Method
+
+    private void buildTextView(TextView textView){
+        // the following change is what fixed it
+        TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT,2.0f);
+
+        int factor = 2;
+        int factor2 = 2;
+
+        textView.setBackgroundColor(Color.RED);
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextColor(getResources().getColor(android.R.color.white));
+        paramsExample.setMargins(factor2, factor2, factor2, factor2);
+        textView.setPadding(factor, factor, factor, factor);
+        textView.setTextSize(10);
+        textView.setText("4 CT" + "\n" + "13:30" + "\n" + "8");
+        textView.setLayoutParams(paramsExample);
+    }
 
     private void drawDesk() {
 
@@ -123,22 +150,22 @@ public class DeskFragment extends Fragment {
     }
 
     private void addRed(int indexX, int indexY, boolean b) {
-        imageViews[indexX][indexY].setBackgroundColor(Color.RED);
+        textViews[indexX][indexY].setBackgroundColor(Color.RED);
 
         if (b) {
-            imageViews[indexX][indexY].setText("No.10");
-            imageViews[indexX][indexY].setTextColor(Color.WHITE);
-            imageViews[indexX][indexY].setTextSize(10);
+            textViews[indexX][indexY].setText("No.10");
+            textViews[indexX][indexY].setTextColor(Color.WHITE);
+            textViews[indexX][indexY].setTextSize(10);
         }
 
     }
 
     private void initialView() {
-        for (int i = 0; i < 5; i += 1) {
+        for (int i = 0; i < 10; i += 1) {
 
             for (int i1 = 0; i1 < 10; i1 += 1) {
 
-                imageViews[i][i1] = getView().findViewById(ints[i][i1]);
+                textViews[i][i1] = getView().findViewById(ints[i][i1]);
 
             } // for1
 

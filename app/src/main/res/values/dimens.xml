@@ -6,4 +6,5 @@
     <dimen name="h3">12sp</dimen>
     <dimen name="icon">90dp</dimen>
     <dimen name="tite">30dp</dimen>
+    <dimen name="tite0">0dp</dimen>
 </resources>
