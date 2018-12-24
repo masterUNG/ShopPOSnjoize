@@ -6,5 +6,8 @@
 
     <string name="open">Open Drawer</string>
     <string name="close">Close Drawer</string>
+    <string name="customeramount">จำนวนลูกค้า</string>
+    <string name="totalbill">รวมบิล</string>
+    <string name="nontotalbill">ไม่รวมบิล</string>
 
 </resources>

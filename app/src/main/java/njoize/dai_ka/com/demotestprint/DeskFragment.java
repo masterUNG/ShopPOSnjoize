@@ -1,7 +1,9 @@
 package njoize.dai_ka.com.demotestprint;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,17 +14,21 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DeskFragment extends Fragment {
+public class DeskFragment extends Fragment implements View.OnClickListener {
 
     //    Explicit
     private TextView[][] textViews = new TextView[10][10];
@@ -40,6 +46,10 @@ public class DeskFragment extends Fragment {
 
     };
 
+    private ArrayList<String> tidStringArrayList = new ArrayList<>();
+    private ArrayList<String> idNameStringArrayList = new ArrayList<>();
+    private ArrayList<String> tnameStringArrayList = new ArrayList<>();
+
 
     public DeskFragment() {
         // Required empty public constructor
@@ -55,7 +65,7 @@ public class DeskFragment extends Fragment {
 //      Draw Desk
         drawDesk();
 
-        buildDesk(textViews[6][1],3, "3 CT", "12:00", "5");
+//        buildDesk(textViews[6][1],3, "3 CT", "12:00", "5");
 
     } // Main Method
 
@@ -103,6 +113,11 @@ public class DeskFragment extends Fragment {
                 String startDesk = jsonObject.getString("tbstart");
                 String endDesk = jsonObject.getString("tbend");
                 String tname = jsonObject.getString("tname");
+
+                tidStringArrayList.add(jsonObject.getString("tid"));
+                tnameStringArrayList.add(tname);
+
+
                 Log.d(tag, "startDesk ==> " + startDesk);
                 Log.d(tag, "endDesk ==> " + endDesk);
 //                convasDesk(startDesk, endDesk);
@@ -113,12 +128,17 @@ public class DeskFragment extends Fragment {
                 int indexEndPre = findIndexPreAnSub(endDesk, true);
                 int deskFactor = indexEndPre - indexStartPre + 1;
 
+                idNameStringArrayList.add("/imv" + Integer.toString(indexStartPre) + "_" + Integer.toString(indexStartSub) + "}");
+
                 buildDesk(textViews[indexStartPre][indexStartSub], deskFactor, "5 CT",
                        "12:30", tname);
 
-
+                textViews[indexStartPre][indexStartSub].setOnClickListener(this);
 
             } // for
+
+            Log.d("24decV1", "tidStringArrayList ==> " + tidStringArrayList.toString());
+            Log.d("24decV1", "idNameStringArrayList ==> " + idNameStringArrayList.toString());
 
 
         } catch (Exception e) {
@@ -195,4 +215,67 @@ public class DeskFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_desk, container, false);
     }
 
+    @Override
+    public void onClick(View v) {
+
+        Log.d("24decV1", v.toString());
+
+        String result = v.toString();
+        result = result.substring(result.lastIndexOf("/"));
+        Log.d("24decV1", "result ==> " + result);
+
+        String tidClick = "";
+        int position = 0;
+
+        for (int i=0; i < idNameStringArrayList.size(); i += 1) {
+            if (result.equals(idNameStringArrayList.get(i))) {
+                position = i;
+            }
+        }   //for
+
+        Log.d("24decV1", "tid Click ==> " + tidStringArrayList.get(position));
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+
+        alertDialogBuilder.setCancelable(false);
+
+        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+        final View view = layoutInflater.inflate(R.layout.layout_alert, null);
+        alertDialogBuilder.setView(view);
+
+        alertDialogBuilder.setTitle("For Desk " + tnameStringArrayList.get(position))
+                .setMessage("Please Fill All Blank")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                EditText editText = view.findViewById(R.id.edtAmountCustomer);
+                String amountCustomerString = editText.getText().toString().trim();
+                if (amountCustomerString.isEmpty()) {
+                    Toast.makeText(getActivity(), "Please Fill Amount Customer", Toast.LENGTH_SHORT).show();
+                } else {
+                    boolean totalBill = true;
+                    RadioButton radioButton = view.findViewById(R.id.radBill);
+                    if (radioButton.isChecked()) {
+                        totalBill = true;
+                    } else {
+                        totalBill = false;
+                    }
+
+                    Log.d("24decV2", "Amunt ==> " + amountCustomerString);
+                    Log.d("24decV2", "totalBill ==> " + totalBill);
+
+
+                }
+
+                dialog.dismiss();
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).show();
+
+
+
+    }   // onClick
 }
