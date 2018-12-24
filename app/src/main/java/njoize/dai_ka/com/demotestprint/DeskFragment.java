@@ -63,16 +63,18 @@ public class DeskFragment extends Fragment {
 //        textViews[9][0].setLayoutParams(layoutParams);
 //        Test
 
-        buildTextView(textViews[9][6]);
+        buildTextView(textViews[6][2], 2, "4 CT", "14:45", "7");
+
+        buildTextView(textViews[7][2], 1, "4 CT", "14:45", "8");
 
 
     } // Main Method
 
-    private void buildTextView(TextView textView){
+    private void buildTextView(TextView textView, int deskFactor, String cnum, String time, String desk){
         // the following change is what fixed it
         TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT,2.0f);
 
-        int factor = 2;
+        int factor = 30 * deskFactor;
         int factor2 = 2;
 
         textView.setBackgroundColor(Color.RED);
@@ -81,7 +83,7 @@ public class DeskFragment extends Fragment {
         paramsExample.setMargins(factor2, factor2, factor2, factor2);
         textView.setPadding(factor, factor, factor, factor);
         textView.setTextSize(10);
-        textView.setText("4 CT" + "\n" + "13:30" + "\n" + "8");
+        textView.setText(cnum + "\n" + time + "\n" + desk);
         textView.setLayoutParams(paramsExample);
     }
 

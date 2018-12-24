@@ -1,89 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DeskFragment">
 
-    <!--Row9-->
-    <LinearLayout
-        android:layout_below="@+id/linOld"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/imv9_0"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_1"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_2"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_3"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_4"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_5"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_6"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_7"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_8"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-        <TextView
-            android:id="@+id/imv9_9"
-            android:layout_width="@dimen/tite"
-            android:layout_height="@dimen/tite"
-            />
-
-
-    </LinearLayout>
-    // Row9
 
     <!--Lin#1-->
     <LinearLayout
         android:id="@+id/linOld"
-        android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
         android:orientation="vertical">
 
         <!--Row0-->
@@ -95,62 +24,52 @@
             <TextView
                 android:id="@+id/imv0_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv0_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -166,62 +85,52 @@
             <TextView
                 android:id="@+id/imv1_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv1_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -237,62 +146,52 @@
             <TextView
                 android:id="@+id/imv2_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv2_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -307,62 +206,52 @@
             <TextView
                 android:id="@+id/imv3_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv3_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -377,62 +266,52 @@
             <TextView
                 android:id="@+id/imv4_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv4_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -447,62 +326,52 @@
             <TextView
                 android:id="@+id/imv5_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv5_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -517,62 +386,52 @@
             <TextView
                 android:id="@+id/imv6_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv6_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -587,62 +446,52 @@
             <TextView
                 android:id="@+id/imv7_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv7_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
@@ -657,79 +506,121 @@
             <TextView
                 android:id="@+id/imv8_0"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_1"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_2"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_3"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_4"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_5"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_6"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_7"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_8"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
             <TextView
                 android:id="@+id/imv8_9"
                 android:layout_width="@dimen/tite"
-                android:layout_height="@dimen/tite"
-                />
+                android:layout_height="@dimen/tite" />
 
 
         </LinearLayout>
         // Row8
 
         <!--Row9-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linOld"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/imv9_0"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_1"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_2"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_3"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_4"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_5"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_6"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_7"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_8"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+            <TextView
+                android:id="@+id/imv9_9"
+                android:layout_width="@dimen/tite"
+                android:layout_height="@dimen/tite" />
+
+
+        </LinearLayout>
         // Row9
-
-
-
 
 
     </LinearLayout>
     // Lin#1
 
 
-
-
-</LinearLayout>
+</RelativeLayout>
