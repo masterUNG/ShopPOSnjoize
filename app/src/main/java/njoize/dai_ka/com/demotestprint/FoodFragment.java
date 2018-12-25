@@ -3,6 +3,8 @@ package njoize.dai_ka.com.demotestprint;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,6 +31,7 @@ public class FoodFragment extends Fragment {
     private String amountCustomerString;
     private boolean totalBillABoolean;
     private String idCategoryClick;
+    private MyManageSQLite myManageSQLite;
 
     public FoodFragment() {
         // Required empty public constructor
@@ -48,6 +51,8 @@ public class FoodFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        myManageSQLite = new MyManageSQLite(getActivity());
 
 //        Receive Value
         receiveValue();
@@ -74,7 +79,8 @@ public class FoodFragment extends Fragment {
         Log.d("25decV1", "userLogin ==> " + userLogin);
 
         final ArrayList<String> foodStringArrayList = new ArrayList<>();
-        ArrayList<String> priceStringArrayList = new ArrayList<>();
+        final ArrayList<String> priceStringArrayList = new ArrayList<>();
+        final ArrayList<String> idFoodStringArrayList = new ArrayList<>();
 
         try {
 
@@ -92,13 +98,27 @@ public class FoodFragment extends Fragment {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 foodStringArrayList.add(jsonObject.getString("pname"));
                 priceStringArrayList.add(jsonObject.getString("price"));
+                idFoodStringArrayList.add(jsonObject.getString("id"));
             }
 
             Log.d("25decV1", "food ==> " + foodStringArrayList.toString());
             FoodAdapter foodAdapter = new FoodAdapter(getActivity(), foodStringArrayList, priceStringArrayList, new OnClickItem() {
                 @Override
                 public void onClickItem(View view, int positions) {
-                    Log.d("25DecV2", "Food Choose ==> " + foodStringArrayList.get(positions));
+                    Log.d("25DecV2", "Food ID Choose ==> " + idFoodStringArrayList.get(positions));
+                    Log.d("25DecV2", "foodName Choose ==> " + foodStringArrayList.get(positions));
+                    Log.d("25DecV2", "Food Price ==> " + priceStringArrayList.get(positions));
+
+                    if (checkHaveFood(idFoodStringArrayList.get(positions))) {
+//                            Increase Old Order
+                        increaseAmountFood(idFoodStringArrayList.get(positions));
+                    } else {
+//                        Add New Order
+                        myManageSQLite.addValueToSQLite(idFoodStringArrayList.get(positions),
+                                foodStringArrayList.get(positions), priceStringArrayList.get(positions), "1");
+                    }
+
+
                 }
             });
 
@@ -109,6 +129,50 @@ public class FoodFragment extends Fragment {
             Log.d("25decV2", "e ==> " + e.toString());
         }
 
+
+
+
+    }
+
+    private void increaseAmountFood(String idFoodString) {
+
+        SQLiteDatabase sqLiteDatabase = getActivity()
+                .openOrCreateDatabase(MyOpenHelper.database_name, Context.MODE_PRIVATE, null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM orderTABLE WHERE idFood = " + "'" + idFoodString + "'", null);
+        cursor.moveToFirst();
+
+        String amountString = cursor.getString(4);
+        int amountInt = Integer.parseInt(amountString);
+        amountInt += 1;
+        amountString = Integer.toString(amountInt);
+        cursor.close();
+
+        sqLiteDatabase.execSQL("UPDATE orderTABLE SET Amount=" + "'" + amountString + "'" + " WHERE idFood=" + "'" + idFoodString + "'");
+
+    }
+
+    private boolean checkHaveFood(String idFoodString) {
+
+        try {
+
+            SQLiteDatabase sqLiteDatabase = getActivity().openOrCreateDatabase(MyOpenHelper.database_name, Context.MODE_PRIVATE, null);
+            Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM orderTABLE", null);
+            cursor.moveToFirst();
+
+            boolean resule = false; // false Without IdFood in Database
+
+            for (int i = 0; i < cursor.getCount(); i += 1) {
+
+                if (idFoodString.equals(cursor.getString(1))) {
+                    resule = true;
+                }
+
+            }
+            return resule;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
 
 
