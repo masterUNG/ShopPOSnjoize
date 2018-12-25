@@ -60,8 +60,49 @@ public class FoodFragment extends Fragment {
 //        Category RecyclerView
         categoryRecyclerView();
 
+//        Check Order
+        checkOrder();
 
     }   // Main Method
+
+    private void checkOrder() {
+
+        try {
+
+            SQLiteDatabase sqLiteDatabase = getActivity().openOrCreateDatabase(MyOpenHelper.database_name, Context.MODE_PRIVATE, null);
+            Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM orderTABLE", null);
+            cursor.moveToFirst();
+
+            Log.d("25decV2", "Cursor Work");
+
+            ArrayList<String> nameFoodStringArrayList = new ArrayList<>();
+            ArrayList<String> amounStringArrayList = new ArrayList<>();
+            ArrayList<String> priceSumStringArrayList = new ArrayList<>();
+
+            for (int i = 0; i < cursor.getCount(); i += 1) {
+
+                nameFoodStringArrayList.add(cursor.getString(2));
+                amounStringArrayList.add(cursor.getString(4));
+
+                int priceInt = Integer.parseInt(cursor.getString(3));
+                int amountInt = Integer.parseInt(amounStringArrayList.get(i));
+
+                priceSumStringArrayList.add(Integer.toString(priceInt * amountInt));
+
+            }   // for
+
+            cursor.close();
+
+            Log.d("25decV2", "nameFood ==> " + nameFoodStringArrayList.toString());
+
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void foodRecyclerView(String idCategoryString) {
         RecyclerView recyclerView = getView().findViewById(R.id.recyclerFood);
@@ -130,8 +171,6 @@ public class FoodFragment extends Fragment {
         }
 
 
-
-
     }
 
     private void increaseAmountFood(String idFoodString) {
@@ -173,7 +212,6 @@ public class FoodFragment extends Fragment {
             e.printStackTrace();
             return false;
         }
-
 
 
     }

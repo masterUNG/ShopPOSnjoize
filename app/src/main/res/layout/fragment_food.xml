@@ -7,11 +7,36 @@
     tools:context=".FoodFragment">
 
     <!--Content Bill-->
-    <FrameLayout
+    <RelativeLayout
         android:layout_weight="1"
-        android:background="#969191"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp">
+
+        <!--Head Title-->
+        <FrameLayout
+            android:background="#63ec3e"
+            android:id="@+id/layoutHead"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!--Content-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerOrder"
+            android:layout_above="@+id/layoutTotal"
+            android:layout_below="@+id/layoutHead"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <!--Total-->
+        <FrameLayout
+            android:background="#63ec3e"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/layoutTotal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+    </RelativeLayout>
 
     <!--Content Menu-->
     <LinearLayout
