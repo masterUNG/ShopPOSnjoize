@@ -5,12 +5,13 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:background="@drawable/cover"
+        android:background="@drawable/cover2"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_gravity="center_horizontal"
             android:id="@+id/txtFood"
             android:textColor="#ffffff"
             android:layout_width="wrap_content"
