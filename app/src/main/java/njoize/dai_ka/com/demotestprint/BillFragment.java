@@ -118,6 +118,11 @@ public class BillFragment extends Fragment {
                     myConstant.getUrlBillWhereOrder());
             String jsonString = readAllDataThread.get();
             Log.d(tag, "jsonString ==> " + jsonString);
+
+            if (jsonString.equals("null")) {
+                recyclerView.setAdapter(null);
+            }
+
             JSONArray jsonArray = new JSONArray(jsonString);
 
             for (int i = 0; i < jsonArray.length(); i += 1) {

@@ -3,6 +3,8 @@ package njoize.dai_ka.com.demotestprint;
 public class MyConstant {
 
     //    Explicit
+    private String urlGetFoodWhereIdAndUser = "http://www.brainwakecafe.com/android/getAllProduct.php";
+
     private int[] iconDrawerInts = new int[]{R.drawable.ic_action_one, R.drawable.ic_action_one, R.drawable.ic_action_exit};
     private String[] titleDrawerStrings = new String[]{"Menu1", "Menu2", "Sign Out"};
 
@@ -53,6 +55,10 @@ public class MyConstant {
 
 //    Getter
 
+
+    public String getUrlGetFoodWhereIdAndUser() {
+        return urlGetFoodWhereIdAndUser;
+    }
 
     public String getUrlGetCategoryString() {
         return urlGetCategoryString;
